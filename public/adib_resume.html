@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>رزومه — ادیب روحانی</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --primary: #1e3a5f;
+        --accent: #2e86ab;
+        --light-bg: #f0f4f8;
+        --separator: #d0dce8;
+        --text-dark: #1a1a2e;
+        --text-mid: #4a4a6a;
+        --card-bg: #fafcff;
+        --tag-bg: #e8f4fd;
+        --white: #ffffff;
+      }
+
+      body {
+        font-family: "Vazirmatn", sans-serif;
+        background: #e8edf3;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        padding: 32px 16px;
+        color: var(--text-dark);
+      }
+
+      /* ── PAGE ── */
+      .page {
+        width: 794px;
+        min-height: 1123px;
+        background: var(--white);
+        display: grid;
+        grid-template-rows: 175px 1fr;
+        grid-template-columns: 1fr 195px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+      }
+
+      /* ── HEADER ── */
+      header {
+        grid-column: 1 / 3;
+        background: var(--primary);
+        padding: 32px 32px 24px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      header::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--accent);
+      }
+      header h1 {
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 6px;
+      }
+      header .title {
+        font-size: 14px;
+        color: #a8d4f0;
+        margin-bottom: 14px;
+      }
+      header .contacts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+      }
+      header .contacts span,
+      header .contacts a {
+        font-size: 9px;
+        color: #c8e4f5;
+      }
+      header .contacts strong {
+        font-weight: 600;
+      }
+
+      /* ── SIDEBAR ── */
+      aside {
+        grid-column: 2;
+        grid-row: 2;
+        background: var(--light-bg);
+        padding: 24px 16px 24px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .sidebar-section h3 {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 12px;
+        padding-bottom: 4px;
+        border-left: 4px solid var(--accent);
+        padding-left: 8px;
+      }
+
+      /* Skill bars */
+      .skill-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .skill-item label {
+        display: block;
+        font-size: 8.5px;
+        color: var(--text-dark);
+        margin-bottom: 4px;
+      }
+      .skill-bar {
+        height: 6px;
+        background: var(--separator);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .skill-bar-fill {
+        height: 100%;
+        background: var(--accent);
+        border-radius: 3px;
+      }
+
+      /* Lang list */
+      .lang-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .lang-item {
+        font-size: 9px;
+        color: var(--text-dark);
+      }
+      .lang-item span {
+        color: var(--text-mid);
+      }
+
+      /* ── MAIN ── */
+      main {
+        grid-column: 1;
+        grid-row: 2;
+        padding: 24px 24px 24px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      /* Section title */
+      .section-title {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--primary);
+        padding-bottom: 5px;
+        border-bottom: 1.5px solid var(--accent);
+        margin-bottom: 10px;
+      }
+
+      /* About */
+      .about-text {
+        font-size: 9.5px;
+        line-height: 1.85;
+        color: var(--text-mid);
+      }
+
+      /* Project cards */
+      .project-card {
+        background: var(--card-bg);
+        border: 0.5px solid var(--separator);
+        border-radius: 6px;
+        padding: 12px 14px 12px 14px;
+        border-right: 3px solid var(--accent);
+        margin-bottom: 10px;
+      }
+      .project-card:last-child {
+        margin-bottom: 0;
+      }
+
+      .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+      .project-title {
+        font-size: 10px;
+        font-weight: 700;
+        color: var(--primary);
+      }
+      .project-tech {
+        font-size: 7.5px;
+        color: var(--accent);
+        text-align: left;
+        direction: ltr;
+      }
+
+      .project-bullets {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .project-bullets li {
+        font-size: 8.5px;
+        color: var(--text-dark);
+        line-height: 1.6;
+        padding-right: 12px;
+        position: relative;
+      }
+      .project-bullets li::before {
+        content: "";
+        position: absolute;
+        right: 2px;
+        top: 6px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      /* Expertise grid */
+      .expertise-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px 16px;
+      }
+      .expertise-item {
+        font-size: 9px;
+        color: var(--text-dark);
+        padding-right: 12px;
+        position: relative;
+        line-height: 1.6;
+
+        a {
+          color: var(--text-dark);
+        }
+      }
+      .expertise-item::before {
+        content: "";
+        position: absolute;
+        right: 2px;
+        top: 6px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        grid-column: 1;
+        align-self: end;
+        padding: 0 24px 10px 16px;
+      }
+      footer p {
+        font-size: 8px;
+        color: var(--text-mid);
+        background: var(--light-bg);
+        padding: 6px 10px;
+        border-radius: 4px;
+        display: inline-block;
+      }
+
+      @media print {
+        body {
+          background: none;
+          padding: 0;
+        }
+        .page {
+          box-shadow: none;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- HEADER -->
+      <header>
+        <h1>ادیب روحانی</h1>
+        <div class="title">توسعه‌دهنده Full-Stack</div>
+        <div class="contacts">
+          <span
+            ><strong>وب‌سایت:</strong>
+            <a href="https://adibmr.ir">adibmr.ir</a> |
+            <a href="https://github.com/AdibTE">github.com/AdibTE</a></span
+          >
+          <span><strong>موقعیت:</strong> Kurdestan, Iran</span>
+        </div>
+      </header>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <div class="sidebar-section">
+          <h3>مهارت‌های Front-End</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <label>React.js</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 92%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>TypeScript</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 88%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>Next.js</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 82%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>Vite</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>TanStack Query</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 80%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>CSS / Bootstrap</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 92%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>SEO tags</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>HTML5</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 95%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>مهارت‌های Back-End</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <label>Node.js / Express</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 75%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>MongoDB / Mongoose</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 73%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>REST API Design</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 78%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>Zod Validation</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 75%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>JWT / Auth</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 70%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>OTP / OAUTH</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 70%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>Database Design</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 60%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>ابزارها و DevOps</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <label>Git / GitHub</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 88%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>GitHub Actions CI/CD</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 72%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>PM2</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 70%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>CDN و SSL ArvanCloud/Cloudflare</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 65%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <label>Photoshop</label>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 95%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>زبان‌ها</h3>
+          <div class="lang-list">
+            <div class="lang-item">کوردی — <span>مادری</span></div>
+            <div class="lang-item">فارسی — <span>بومی</span></div>
+            <div class="lang-item">انگلیسی — <span>عالی</span></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main>
+        <!-- About -->
+        <section>
+          <div class="section-title">درباره من</div>
+          <p class="about-text">
+            توسعه‌دهنده Full-Stack که شروع از Front-End و با گسترش AI، اکنون
+            توانایی توسعه Back-End را نیز دارم همچنین با تجربه در ساخت
+            اپلیکیشن‌های وب مدرن با تمرکز بر React، TypeScript، و Next.js. تجربه
+            کار روی پروژه‌های واقعی شامل فروشگاه‌های آنلاین، پنل‌های ادمین، و
+            سیستم‌های CI/CD در محیط‌های تولیدی.
+          </p>
+        </section>
+
+        <!-- Projects -->
+        <section>
+          <div class="section-title">پروژه‌های کلیدی</div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <span class="project-title"
+                >Khorshid Hypermarket — sun-mart.ir</span
+              >
+              <span class="project-tech"
+                >Next.js · Node.js · Express · MongoDB · TypeScript</span
+              >
+            </div>
+            <ul class="project-bullets">
+              <li>
+                ساخت صفحات SSR با Next.js و صفحه‌بندی با TanStack Query
+                (useInfiniteQuery)
+              </li>
+              <li>
+                پیاده‌سازی سیستم ارسال پیام با مدل Mongoose و پنل مدیریت ادمین
+              </li>
+              <li>
+                طراحی middleware قابل‌استفاده مجدد برای rate limiting با factory
+                function
+              </li>
+              <li>
+                راه‌اندازی CI/CD با GitHub Actions و self-hosted runner روی
+                Windows VPS
+              </li>
+              <li>مدیریت deployment با PM2 در محیط تولید</li>
+            </ul>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <span class="project-title"
+                >فروشگاه زنجیره‌ای — پنل مدیریت و سایت عمومی</span
+              >
+              <span class="project-tech"
+                >React · Vite · TypeScript · Express · MongoDB</span
+              >
+            </div>
+            <ul class="project-bullets">
+              <li>
+                ساخت سیستم فیلترینگ جنریک با TypeScript Generics برای محصولات،
+                پست‌ها و تیکت‌ها
+              </li>
+              <li>
+                پیاده‌سازی جریان کامل e-commerce: سبد خرید، checkout، و ثبت
+                سفارش
+              </li>
+              <li>
+                سیستم تم و تنظیمات با پالت رنگی قابل ویرایش در ادمین و CSS
+                Variables
+              </li>
+              <li>ماژول مدیریت رزرواسیون‌ها در پنل ادمین</li>
+              <li>ساخت صفحه تماس با انیمیشن CSS و اعتبارسنجی Zod</li>
+            </ul>
+          </div>
+
+          <div class="project-card">
+            <div class="project-header">
+              <span class="project-title"
+                >adibmr.ir - پروژه شخصی پورتفویلو</span
+              >
+              <span class="project-tech"
+                >React · Vite · TypeScript · Tanstack Start · Framer Motion ·
+                Vercel</span
+              >
+            </div>
+            <ul class="project-bullets">
+              <li>این پروژه به طور کامل Vibe Code شده توسط Lovable می‌باشد</li>
+              <li>
+                مهارت های موجود در صفحه توسط اطلاعات موجود در Claude و ChatGpt به
+                صورت پرامپت تولید شده است
+              </li>
+              <li>
+                با آپلود روی گیتهاب و دیپلوی روی Vercel پروژه راه اندازی شد
+              </li>
+              <li>
+                در نهایت دامنه خریداری شده روی nameserver های ArvanCloud تنظیم
+                شد و پس از آن روی Vercel قرار گرفت
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Expertise -->
+        <section>
+          <div class="section-title">تخصص‌های فنی</div>
+          <div class="expertise-grid">
+            <div class="expertise-item">معماری Component-based در React</div>
+            <div class="expertise-item">طراحی REST API با Express</div>
+            <div class="expertise-item">Custom Hooks و Context API</div>
+            <div class="expertise-item">Schema design در MongoDB</div>
+            <div class="expertise-item">SSR / SSG با Next.js</div>
+            <div class="expertise-item">Middleware و Auth (JWT)</div>
+            <div class="expertise-item">State management با TanStack Query</div>
+            <div class="expertise-item">مدیریت Git branching (dev/master)</div>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">راه های ارتباطی</div>
+          <div class="expertise-grid">
+            <div class="expertise-item">
+              تلفن: <a href="tel:09353565148" dir="ltr">0935 356 5148</a>
+            </div>
+            <div class="expertise-item">
+              ایمیل: <a href="mailto:adibte@hotmail.com">adibte@hotmail.com</a>
+            </div>
+            <div class="expertise-item">
+              ایمیل:
+              <a href="mailto:rohany.adib77@gmail.com"
+                >rohany.adib77@gmail.com</a
+              >
+            </div>
+            <div class="expertise-item">
+              گیتهاب: <a href="https://github.com/adibte">github.com/adibte</a>
+            </div>
+            <div class="expertise-item">
+              تلگرام: <a href="https://t.me/bluesindrome">t.me/bluesindrome</a>
+            </div>
+          </div>
+        </section>
+
+        <footer>
+          <p>آماده همکاری تمام‌وقت — 1405</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

@@ -77,15 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#0a0a0a" },
-      { title: "Adib — Front-end Engineer" },
+      { name: "theme-color", content: "#0c1210" },
+      { title: "Adib M. Rohani — Front-end Engineer" },
       {
         name: "description",
         content:
-          "Portfolio of Adib, a front-end engineer building thoughtful, fast web interfaces.",
+          "Adib M. Rohani — front-end engineer. React, TypeScript, Next.js. Full-stack when it matters.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Adib" },
+      { property: "og:site_name", content: "Adib M. Rohani" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [

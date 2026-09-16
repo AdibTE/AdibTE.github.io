@@ -2,13 +2,12 @@
 @source "../src";
 @import "tw-animate-css";
 
-@import "@fontsource/geist-sans/300.css";
 @import "@fontsource/geist-sans/400.css";
 @import "@fontsource/geist-sans/500.css";
 @import "@fontsource/geist-sans/600.css";
-@import "@fontsource/geist-sans/700.css";
 @import "@fontsource/geist-mono/400.css";
 @import "@fontsource/geist-mono/500.css";
+@import "@fontsource/geist-mono/600.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -45,37 +44,36 @@
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0.25rem;
 
-  /* Dark by default — pure near-black canvas */
-  --background: oklch(0.145 0.005 260);
-  --foreground: oklch(0.97 0.005 260);
+  /* Terminal — near-black + phosphor green */
+  --background: oklch(0.13 0.015 145);
+  --foreground: oklch(0.92 0.02 145);
 
-  --card: oklch(0.18 0.008 260);
-  --card-foreground: oklch(0.97 0.005 260);
+  --card: oklch(0.17 0.018 145);
+  --card-foreground: oklch(0.92 0.02 145);
 
-  --popover: oklch(0.18 0.008 260);
-  --popover-foreground: oklch(0.97 0.005 260);
+  --popover: oklch(0.17 0.018 145);
+  --popover-foreground: oklch(0.92 0.02 145);
 
-  /* Electric Blue accent */
-  --primary: oklch(0.68 0.18 255);
-  --primary-foreground: oklch(0.14 0.02 260);
+  --primary: oklch(0.78 0.16 145);
+  --primary-foreground: oklch(0.14 0.03 145);
 
-  --secondary: oklch(0.24 0.01 260);
-  --secondary-foreground: oklch(0.97 0.005 260);
+  --secondary: oklch(0.22 0.02 145);
+  --secondary-foreground: oklch(0.92 0.02 145);
 
-  --muted: oklch(0.22 0.008 260);
-  --muted-foreground: oklch(0.65 0.015 260);
+  --muted: oklch(0.2 0.018 145);
+  --muted-foreground: oklch(0.62 0.04 145);
 
-  --accent: oklch(0.68 0.18 255);
-  --accent-foreground: oklch(0.14 0.02 260);
+  --accent: oklch(0.78 0.16 145);
+  --accent-foreground: oklch(0.14 0.03 145);
 
   --destructive: oklch(0.65 0.22 25);
-  --destructive-foreground: oklch(0.97 0.005 260);
+  --destructive-foreground: oklch(0.97 0.005 145);
 
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.68 0.18 255 / 60%);
+  --border: oklch(0.78 0.16 145 / 12%);
+  --input: oklch(0.78 0.16 145 / 14%);
+  --ring: oklch(0.78 0.16 145 / 50%);
 }
 
 @layer base {
@@ -91,41 +89,12 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     -webkit-font-smoothing: antialiased;
-    font-feature-settings: "ss01", "cv11";
   }
 
   ::selection {
-    background-color: oklch(0.68 0.18 255 / 30%);
+    background-color: oklch(0.78 0.16 145 / 28%);
     color: var(--color-foreground);
   }
-}
-
-@utility text-balance {
-  text-wrap: balance;
-}
-
-@utility grid-bg {
-  background-image:
-    linear-gradient(to right, oklch(1 0 0 / 4%) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(1 0 0 / 4%) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-
-@utility glow-accent {
-  box-shadow:
-    0 0 0 1px oklch(0.68 0.18 255 / 30%),
-    0 0 40px -8px oklch(0.68 0.18 255 / 40%);
-}
-
-@utility noise {
-  position: relative;
-}
-@utility noise-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
