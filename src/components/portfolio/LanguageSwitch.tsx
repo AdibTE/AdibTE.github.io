@@ -11,6 +11,7 @@ export function LanguageSwitch({ locale }: LanguageSwitchProps) {
 
   return (
     <nav
+      dir="ltr"
       className="fixed end-4 top-4 z-20 flex items-center gap-1 font-mono text-xs text-muted-foreground sm:end-6 sm:top-6"
       aria-label={t.langSwitchAria}
     >

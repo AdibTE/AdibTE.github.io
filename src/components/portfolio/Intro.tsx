@@ -57,7 +57,14 @@ export function Intro({ locale }: IntroProps) {
           transition={{ duration: 0.5 }}
           className="text-sm text-muted-foreground"
         >
-          <span className="text-primary">~/</span>adib
+          {t.brandPath.startsWith("~/") ? (
+            <>
+              <span className="text-primary">~/</span>
+              {t.brandPath.slice(2)}
+            </>
+          ) : (
+            t.brandPath
+          )}
         </motion.p>
 
         <motion.h1
