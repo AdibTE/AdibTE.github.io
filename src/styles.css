@@ -8,12 +8,16 @@
 @import "@fontsource/geist-mono/400.css";
 @import "@fontsource/geist-mono/500.css";
 @import "@fontsource/geist-mono/600.css";
+@import "@fontsource/vazirmatn/400.css";
+@import "@fontsource/vazirmatn/500.css";
+@import "@fontsource/vazirmatn/600.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, monospace;
+  --font-fa: "Vazirmatn", "Geist Sans", ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -91,6 +95,14 @@
     color: var(--color-foreground);
     font-family: var(--font-mono);
     -webkit-font-smoothing: antialiased;
+  }
+
+  html[lang="fa"] body {
+    font-family: var(--font-fa);
+  }
+
+  .font-fa {
+    font-family: var(--font-fa);
   }
 
   ::selection {
