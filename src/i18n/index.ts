@@ -8,7 +8,10 @@ export function isLocale(value: string): value is Locale {
 }
 
 export function localeFromPathname(pathname: string): Locale {
-  if (pathname === "/fa" || pathname.startsWith("/fa/")) return "fa";
+  // Match /fa even when a base path is present (e.g. /portfolio-lovable/fa).
+  if (pathname === "/fa" || pathname.endsWith("/fa") || pathname.includes("/fa/")) {
+    return "fa";
+  }
   return "en";
 }
 
@@ -46,12 +49,14 @@ export type Dictionary = {
   };
 };
 
+const resumeHref = `${import.meta.env.BASE_URL}adib_resume.html`;
+
 const sharedLinks = [
   { href: "mailto:adibte@hotmail.com", label: "email" },
   { href: "tel:+989353565148", label: "phone" },
   { href: "https://github.com/AdibTE", label: "github" },
   { href: "https://linkedin.com/in/adib-te-58090b19b/", label: "linkedin" },
-  { href: "/adib_resume.html", label: "cv" },
+  { href: resumeHref, label: "cv" },
 ] as const;
 
 export const dictionaries: Record<Locale, Dictionary> = {
@@ -127,7 +132,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       { href: "tel:+989353565148", label: "تلفن" },
       { href: "https://github.com/AdibTE", label: "گیت‌هاب" },
       { href: "https://linkedin.com/in/adib-te-58090b19b/", label: "لینکدین" },
-      { href: "/adib_resume.html", label: "رزومه" },
+      { href: resumeHref, label: "رزومه" },
     ],
     notFound: {
       title: "صفحه پیدا نشد",

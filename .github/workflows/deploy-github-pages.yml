@@ -1,0 +1,66 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build:pages
+
+      - name: Ensure SPA fallback
+        run: |
+          PUB="dist/client"
+          if [ ! -f "$PUB/404.html" ]; then
+            if [ -f "$PUB/index.html" ]; then
+              cp "$PUB/index.html" "$PUB/404.html"
+            elif [ -f "$PUB/_shell.html" ]; then
+              cp "$PUB/_shell.html" "$PUB/404.html"
+            else
+              echo "No HTML shell found for 404.html fallback" >&2
+              ls -la "$PUB" || true
+              exit 1
+            fi
+          fi
+          touch "$PUB/.nojekyll"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/client
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

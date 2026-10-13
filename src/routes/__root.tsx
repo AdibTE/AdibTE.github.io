@@ -1,17 +1,15 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
-  createRootRouteWithContext,
+  createRootRoute,
   useRouter,
   useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { getDictionary, localeFromPathname } from "@/i18n";
 
 function NotFoundComponent() {
@@ -47,11 +45,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const locale = localeFromPathname(pathname);
   const t = getDictionary(locale);
-  const homeHref = locale === "fa" ? "/fa" : "/";
-
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
+  const homeHref =
+    locale === "fa"
+      ? `${import.meta.env.BASE_URL}fa`
+      : import.meta.env.BASE_URL;
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -82,7 +79,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -103,8 +100,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.png", type: "image/png" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      {
+        rel: "icon",
+        href: `${import.meta.env.BASE_URL}favicon.png`,
+        type: "image/png",
+      },
+      {
+        rel: "apple-touch-icon",
+        href: `${import.meta.env.BASE_URL}apple-touch-icon.png`,
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -132,12 +136,5 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-    </QueryClientProvider>
-  );
+  return <Outlet />;
 }

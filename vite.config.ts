@@ -1,18 +1,39 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
-// or the app will break with duplicate plugins:
-//   - tanstackStart, viteReact, tailwindcss, tsConfigPaths, nitro (build-only using cloudflare as a default target),
-//     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
-//     error logger plugins, and sandbox detection (port/host/strictPort).
-// You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import tailwindcss from "@tailwindcss/vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import viteReact from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
+// GitHub project pages: https://adibte.github.io/portfolio-lovable/
+const REPO_BASE = "/portfolio-lovable/";
+
+const isGitHubPages =
+  (process.argv.includes("--mode") &&
+    process.argv[process.argv.indexOf("--mode") + 1] === "pages") ||
+  Boolean(process.env.BASE_PATH) ||
+  process.env.GITHUB_PAGES === "true";
+
+const base = process.env.BASE_PATH || (isGitHubPages ? REPO_BASE : "/");
 
 export default defineConfig({
-  // Required for Vercel (and other non-Lovable deploys): Nitro is skipped by default
-  // outside Lovable's sandbox, so SSR routes never become serverless functions → 404.
-  nitro: { preset: "vercel" },
-  tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
+  base,
+  resolve: {
+    tsconfigPaths: true,
   },
+  plugins: [
+    tailwindcss(),
+    tanstackStart({
+      spa: {
+        enabled: true,
+        prerender: {
+          outputPath: "/404.html",
+          crawlLinks: true,
+        },
+      },
+      prerender: {
+        enabled: true,
+        crawlLinks: true,
+      },
+    }),
+    viteReact(),
+  ],
 });
