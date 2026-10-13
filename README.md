@@ -15,4 +15,4 @@ npm run preview      # preview production build
 
 Push to `master`. GitHub Actions builds and publishes to:
 
-https://adibte.github.io/portfolio-lovable/
+https://adibte.github.io/adibmr.github.io/

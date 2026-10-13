@@ -3,8 +3,8 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
-// GitHub project pages: https://adibte.github.io/portfolio-lovable/
-const REPO_BASE = "/portfolio-lovable/";
+// GitHub project pages: https://adibte.github.io/adibmr.github.io/
+const REPO_BASE = "/adibmr.github.io/";
 
 const isGitHubPages =
   (process.argv.includes("--mode") &&

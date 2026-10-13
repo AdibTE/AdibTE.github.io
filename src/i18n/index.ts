@@ -8,7 +8,7 @@ export function isLocale(value: string): value is Locale {
 }
 
 export function localeFromPathname(pathname: string): Locale {
-  // Match /fa even when a base path is present (e.g. /portfolio-lovable/fa).
+  // Match /fa even when a base path is present (e.g. /adibmr.github.io/fa).
   if (pathname === "/fa" || pathname.endsWith("/fa") || pathname.includes("/fa/")) {
     return "fa";
   }
