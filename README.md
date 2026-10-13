@@ -1,48 +1,29 @@
-# Adib M. Rohani — Portfolio
+# Adib M. Rohani
 
-Personal portfolio (EN / FA).
+Front-end engineer. Full-stack when it matters.
 
-- GitHub Pages (user site): https://adibte.github.io/
-- Custom domain: https://adibmr.ir
+I ship fast, typed React apps — from UI to API. Freelance and product work across storefronts, admin panels, and production backends for 5+ years (20+ shipped apps).
 
-## Scripts
+**[adibmr.ir](https://adibmr.ir)** · **[adibte.github.io](https://adibte.github.io)**
 
-```bash
-npm install
-npm run dev      # local development
-npm run build    # static production build
-npm run preview  # preview production build
-```
+## Focus
 
-## Deploy
+- **Front-end** — React, TypeScript, Next.js
+- **Back-end when needed** — Node, Express, MongoDB, MySQL
+- **Delivery** — Zod, Docker, GitHub Actions, PM2
 
-Push to `master`. GitHub Actions publishes to GitHub Pages.
+## Selected work
 
-### Required: user-site repo name
+- **Khorshid** — commerce + AI catalog
+- **Chain Store** — storefront · panel · admin
 
-For the site to live at **https://adibte.github.io/** (root, not a subpath), the GitHub repo must be named exactly:
+## Contact
 
-`AdibTE.github.io`
+- Email: [adibte@hotmail.com](mailto:adibte@hotmail.com)
+- Phone: [+98 935 356 5148](tel:+989353565148)
+- GitHub: [AdibTE](https://github.com/AdibTE)
+- LinkedIn: [adib-te](https://linkedin.com/in/adib-te-58090b19b/)
 
-Rename under **Settings → General → Repository name**, then update the local remote:
+---
 
-```bash
-git remote set-url origin https://github.com/AdibTE/AdibTE.github.io.git
-```
-
-### One-time GitHub Pages setup
-
-1. **Settings → Pages**
-2. **Source** = `GitHub Actions`
-3. **Custom domain** = `adibmr.ir` (optional; leave empty if you only want github.io)
-4. After DNS verifies, enable **Enforce HTTPS**
-
-### DNS (only if using adibmr.ir)
-
-| Type | Name | Value |
-| --- | --- | --- |
-| A | `@` | `185.199.108.153` |
-| A | `@` | `185.199.109.153` |
-| A | `@` | `185.199.110.153` |
-| A | `@` | `185.199.111.153` |
-| CNAME | `www` | `adibte.github.io` |
+ادیب م. روحانی — مهندس فرانت‌اند. فول‌استک وقتی لازم باشد. اپ‌های React تایپ‌شده را سریع، از UI تا API، می‌سازم.
