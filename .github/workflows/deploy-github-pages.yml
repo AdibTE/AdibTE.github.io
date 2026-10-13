@@ -31,22 +31,15 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build:pages
+        run: npm run build
+        env:
+          BASE_PATH: /
 
       - name: Ensure SPA fallback
         run: |
           PUB="dist/client"
-          if [ ! -f "$PUB/404.html" ]; then
-            if [ -f "$PUB/index.html" ]; then
-              cp "$PUB/index.html" "$PUB/404.html"
-            elif [ -f "$PUB/_shell.html" ]; then
-              cp "$PUB/_shell.html" "$PUB/404.html"
-            else
-              echo "No HTML shell found for 404.html fallback" >&2
-              ls -la "$PUB" || true
-              exit 1
-            fi
-          fi
+          test -f "$PUB/index.html" || { echo "missing index.html"; ls -la "$PUB"; exit 1; }
+          cp "$PUB/index.html" "$PUB/404.html"
           touch "$PUB/.nojekyll"
 
       - name: Upload Pages artifact
